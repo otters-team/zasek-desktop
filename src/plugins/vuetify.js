@@ -3,6 +3,7 @@ import Vuetify, {
   VApp,
   VNavigationDrawer,
   VToolbar,
+  VCard,
 } from 'vuetify/lib'
 import {
   Ripple
@@ -15,18 +16,18 @@ Vue.use(Vuetify, {
     VApp,
     VNavigationDrawer,
     VToolbar,
+    VCard,
   },
   directives: {
     Ripple
   },
   theme: {
-    primary: '#3AAFA9',
-    secondary: '#DEF2F1',
-    accent: '#2B7A78',
+    primary: '#FA709A',
+    secondary: '#FEE140',
+    accent: '#52ACFF',
     error: '#b71c1c',
     black: '#17252A',
     white: '#FEFFFF',
-    test: '#FF0000'
   },
   options: {
     customProperties: true,

@@ -1,11 +1,20 @@
 <template>
-  <v-navigation-drawer v-model="primaryDrawer" clipped absolute overflow app class="side-menu">
-    <v-list class="pt-0">
+  <v-navigation-drawer
+    :value="value"
+    @input="newValue => $emit('input', newValue)"
+    clipped
+    absolute
+    floating
+    overflow
+    app
+    class="side-menu"
+  >
+    <v-list class="py-3">
       <v-list-tile
         v-for="(item, index) in items"
         :key="index"
         @click="$router.push({name: item.to})"
-        class="side-menu__item"
+        class="side-menu__item py-1"
       >
         <v-list-tile-action>
           <v-icon class="side-menu__item-icon" v-if="item.icon">{{ item.icon }}</v-icon>
@@ -22,9 +31,9 @@
 <script>
 export default {
   name: "side-menu",
-  data: () => ({
-    primaryDrawer: null
-  }),
+  props: {
+    value: Boolean
+  },
   computed: {
     items() {
       return [
@@ -48,6 +57,8 @@ export default {
 @import "~styles";
 
 .side-menu {
+  @include shadow;
+  background-color: $white;
   &__item {
     &-icon,
     &-text {

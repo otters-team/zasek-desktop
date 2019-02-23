@@ -1,0 +1,16 @@
+@import "./_colors";
+
+@mixin shadow () {
+  box-shadow: 0 1rem 3rem rgba(0,0,0,0.2);
+}
+
+
+@mixin gradient-bg() {
+  background-color: $secondary;
+  background-image: -webkit-linear-gradient(315deg, $secondary 0%, $primary 100%);
+  background-image: -moz-linear-gradient(315deg, $secondary 0%, $primary 100%);
+  background-image: -o-linear-gradient(315deg, $secondary 0%, $primary 100%);
+  background-image: linear-gradient(315deg, $secondary 0%, $primary 100%);
+
+  @include shadow();
+}

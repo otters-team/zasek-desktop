@@ -1,10 +1,9 @@
 <template>
-  <v-app id="app">
-    <side-menu/>
+  <v-app id="app" class="app">
+    <side-menu v-model="isSideMenuOpen"/>
+    <nav-bar v-model="isSideMenuOpen"/>
 
-    <nav-bar/>
-
-    <v-content class>
+    <v-content class="app__content">
       <v-container fluid>
         <router-view/>
       </v-container>
@@ -19,9 +18,8 @@ import NavBar from "@/components/NavBar";
 export default {
   name: "App",
   data: () => ({
-    primaryDrawer: null
+    isSideMenuOpen: null
   }),
-
   components: {
     SideMenu,
     NavBar
@@ -30,4 +28,11 @@ export default {
 </script>
 
 <style lang="scss">
+@import "~styles";
+
+.app {
+  &__content {
+    background-color: $white;
+  }
+}
 </style>
