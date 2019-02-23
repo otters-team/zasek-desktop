@@ -38,7 +38,7 @@ export default {
     items() {
       return [
         {
-          to: "home",
+          to: "tracker",
           text: "Main page",
           icon: "home"
         },

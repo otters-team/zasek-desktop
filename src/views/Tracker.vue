@@ -1,13 +1,17 @@
 <template>
   <div>
-    <h1 class="mb-3 accent--text">Home page</h1>
-    <v-card class="test">qwewqe</v-card>
+    <new-task-form/>
   </div>
 </template>
 
 <script>
+import NewTaskForm from "@/components/NewTaskForm";
+
 export default {
-  name: "home-page"
+  name: "tracker-page",
+  components: {
+    NewTaskForm
+  }
 };
 </script>
 
