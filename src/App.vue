@@ -1,13 +1,10 @@
 <template>
   <v-app id="app">
-    <v-navigation-drawer v-model="primaryDrawer" :clipped="true" absolute overflow app></v-navigation-drawer>
+    <side-menu/>
 
-    <v-toolbar clipped-left app absolute>
-      <v-toolbar-side-icon @click.stop="primaryDrawer = !primaryDrawer"/>
-      <v-toolbar-title>Title</v-toolbar-title>
-    </v-toolbar>
+    <nav-bar/>
 
-    <v-content>
+    <v-content class>
       <v-container fluid>
         <router-view/>
       </v-container>
@@ -16,16 +13,21 @@
 </template>
 
 <script>
+import SideMenu from "@/components/SideMenu";
+import NavBar from "@/components/NavBar";
+
 export default {
   name: "App",
   data: () => ({
     primaryDrawer: null
-  })
+  }),
+
+  components: {
+    SideMenu,
+    NavBar
+  }
 };
 </script>
 
 <style lang="scss">
-.desktop-menu {
-  margin-top: 58px;
-}
 </style>
