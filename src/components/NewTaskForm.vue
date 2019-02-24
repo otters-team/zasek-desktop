@@ -1,28 +1,37 @@
 <template>
   <v-card class="new-task-form pa-3">
     <v-layout row wrap align-center>
-      <v-flex xs2 md1 v-if="task.project.name">
-        <span class="new-task-form__prefix">{{ task.project.prefix }} -</span>
+      <v-flex xs12 md4 class="new-task-form__description-input">
+        <v-layout row>
+          <span
+            v-if="task.project.name"
+            class="new-task-form__prefix pr-2"
+          >{{ task.project.prefix }} -</span>
+          <input v-model="task.description" placeholder="Task description">
+        </v-layout>
       </v-flex>
-      <v-flex xs10 md4 class="new-task-form__description-input">
-        <input v-model="task.description" placeholder="Task description">
-      </v-flex>
-      <v-divider vertical class="mx-2"/>
-      <v-flex xs6 md1>
+      <v-divider vertical class="mx-2 hidden-sm-and-down"/>
+      <v-layout row wrap>
         <v-select
           class="new-task-form__project-select"
           flat
           solo
+          chips
           hide-details
           :items="projects"
           @input="(projectName) => task.project = projects.find(p => p.name === projectName)"
           item-text="name"
           label="Project"
-        />
-      </v-flex>
-      <v-flex xs6 md2>
+        >
+          <template slot="selection" slot-scope="{ item }">
+            <v-chip class="new-task-form__select-chip"  dark :style="gradientStyeObject">
+              <span class="new-task-form__select-chip-content">{{ item.name }}</span>
+            </v-chip>
+          </template>
+        </v-select>
         <v-select
-          v-model="task.tag"
+          class="new-task-form__tag-select"
+          v-model="task.tags"
           :items="tags"
           chips
           label="Tags"
@@ -30,23 +39,40 @@
           flat
           multiple
           solo
-        />
-      </v-flex>
+        >
+          <template slot="selection" slot-scope="{ item, index }">
+            <v-chip
+              class="new-task-form__select-chip"
+              dark
+              v-if="index === 0"
+              :style="gradientStyeObject"
+            >
+              <span class="new-task-form__select-chip-content">{{ item }}</span>
+            </v-chip>
+            <span v-if="index === 1" class="caption">(+{{ task.tags.length - 1 }} other)</span>
+          </template>
+        </v-select>
+      </v-layout>
+      <v-divider vertical class="mx-2 hidden-sm-and-down"/>
       <v-spacer/>
-      <v-divider vertical class="mx-1"/>
+      <v-icon class="new-task-form__timer-form-icon">timer</v-icon>
+      <v-spacer/>
+      <v-divider vertical class="mx-2 hidden-sm-and-down"/>
       <v-btn class="new-task-form__submit-button" flat>start</v-btn>
     </v-layout>
   </v-card>
 </template>
 
 <script>
+import { randomGradient } from "@/utils/styleUtils";
+
 export default {
   name: "new-task-form",
   data: () => ({
     task: {
       description: "",
       project: {},
-      tag: ""
+      tags: []
     },
     projects: [
       {
@@ -62,8 +88,11 @@ export default {
         prefix: "C prefix"
       }
     ],
-    tags: ["qwe", "asd", "zxc"]
-  })
+    tags: ["qwe", "asd", "fghsd", "12345", "fghfghgh", "wefdwesdsdsdsddwe"]
+  }),
+  computed: {
+    gradientStyeObject: () => randomGradient()
+  }
 };
 </script>
 
@@ -71,13 +100,17 @@ export default {
 @import "~styles";
 .new-task-form {
   @include shadow;
+
+  border-radius: $border-radius;
+
   &__prefix {
-    @include text-overflow;
+    white-space: nowrap;
     font-size: 20px;
     cursor: default;
   }
   &__description-input {
     input {
+      padding: 0 12px;
       @include text-overflow;
       width: 100%;
       font-size: 15px;
@@ -97,16 +130,31 @@ export default {
       background-color: $accent;
     }
   }
+  &__select-chip {
+    &-content {
+      max-width: 90px;
+      @include text-overflow;
+    }
+  }
   &__project-select {
-    margin-top: 2px;
-    min-width: 150px;
     @include text-overflow;
+    max-width: 180px;
+  }
+  &__tag-select {
+    max-width: 250px;
+  }
+  &__timer-form-icon {
+    @include pulse();
+    cursor: pointer;
+    font-size: 40px;
+    color: $primary;
   }
   &__submit-button {
     min-width: 100px;
     text-transform: uppercase;
     background-color: $accent !important;
     color: $white;
+    float: right;
     &:hover {
       background-color: $secondary !important;
     }
