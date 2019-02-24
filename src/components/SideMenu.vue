@@ -8,6 +8,7 @@
     overflow
     app
     class="side-menu"
+    :class="{'side-menu--with-shadow': value}"
   >
     <v-list class="py-3">
       <v-list-tile
@@ -31,9 +32,7 @@
 <script>
 export default {
   name: "side-menu",
-  props: {
-    value: Boolean
-  },
+  props: ["value"],
   computed: {
     items() {
       return [
@@ -57,13 +56,18 @@ export default {
 @import "~styles";
 
 .side-menu {
-  @include shadow;
   background-color: $white;
+  border-bottom-right-radius: $border-radius * 3;
+
   &__item {
     &-icon,
     &-text {
       color: $primary;
     }
+  }
+
+  &--with-shadow {
+    @include shadow();
   }
 }
 </style>

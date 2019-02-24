@@ -1,20 +1,18 @@
 <template>
-  <v-toolbar class="nav-bar" clipped-left app absolute>
+  <v-toolbar class="nav-bar" :style="gradientStyeObject" clipped-left app absolute>
     <v-toolbar-side-icon class="nav-bar__menu-button" @click.stop="$emit('input', !value)"/>
     <v-toolbar-title>Zasek</v-toolbar-title>
   </v-toolbar>
 </template>
 
 <script>
+import { randomGradient } from "@/utils/styleUtils";
+
 export default {
   name: "nav-bar",
-  props: {
-    value: Boolean
-  },
-  data() {
-    return {
-      sideMenu: this.value
-    };
+  props: ["value"],
+  computed: {
+    gradientStyeObject: () => randomGradient()
   }
 };
 </script>
@@ -23,10 +21,8 @@ export default {
 @import "~styles";
 
 .nav-bar {
-  @include gradient-bg();
-
-  border-bottom-left-radius: $border-radius--big;
-  border-bottom-right-radius: $border-radius--big;
+  border-bottom-left-radius: $border-radius * 3;
+  border-bottom-right-radius: $border-radius * 3;
 
   &,
   &__menu-button {
