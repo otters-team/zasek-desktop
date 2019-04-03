@@ -1,17 +1,34 @@
 <template>
   <v-card class="new-task-form pa-3">
-    <v-layout row wrap align-center>
-      <v-flex xs12 md4 class="new-task-form__description-input">
+    <v-layout
+      row
+      wrap
+      align-center
+    >
+      <v-flex
+        xs12
+        md4
+        class="new-task-form__description-input"
+      >
         <v-layout row>
           <span
             v-if="task.project.name"
             class="new-task-form__prefix pr-2"
           >{{ task.project.prefix }} -</span>
-          <input v-model="task.description" placeholder="Task description">
+          <input
+            v-model="task.description"
+            placeholder="Task description"
+          >
         </v-layout>
       </v-flex>
-      <v-divider vertical class="mx-2 hidden-sm-and-down"/>
-      <v-layout row wrap>
+      <v-divider
+        vertical
+        class="mx-2 hidden-sm-and-down"
+      />
+      <v-layout
+        row
+        wrap
+      >
         <v-select
           class="new-task-form__project-select"
           flat
@@ -19,19 +36,29 @@
           chips
           hide-details
           :items="projects"
-          @input="(projectName) => task.project = projects.find(p => p.name === projectName)"
           item-text="name"
           label="Project"
+          @input="(projectName) => task.project = projects.find(
+            (p) => p.name === projectName
+          )"
         >
-          <template slot="selection" slot-scope="{ item }">
-            <v-chip class="new-task-form__select-chip"  dark :style="gradientStyeObject">
-              <span class="new-task-form__select-chip-content">{{ item.name }}</span>
+          <template
+            slot="selection"
+            slot-scope="{ item }"
+          >
+            <v-chip
+              class="new-task-form__select-chip"
+              dark
+            >
+              <span class="new-task-form__select-chip-content">
+                {{ item.name }}
+              </span>
             </v-chip>
           </template>
         </v-select>
         <v-select
-          class="new-task-form__tag-select"
           v-model="task.tags"
+          class="new-task-form__tag-select"
           :items="tags"
           chips
           label="Tags"
@@ -40,60 +67,75 @@
           multiple
           solo
         >
-          <template slot="selection" slot-scope="{ item, index }">
+          <template
+            slot="selection"
+            slot-scope="{ item, index }"
+          >
             <v-chip
+              v-if="index === 0"
               class="new-task-form__select-chip"
               dark
-              v-if="index === 0"
-              :style="gradientStyeObject"
             >
-              <span class="new-task-form__select-chip-content">{{ item }}</span>
+              <span class="new-task-form__select-chip-content">
+                {{ item }}
+              </span>
             </v-chip>
-            <span v-if="index === 1" class="caption">(+{{ task.tags.length - 1 }} other)</span>
+            <span
+              v-if="index === 1"
+              class="caption"
+            >(+{{ task.tags.length - 1 }} other)</span>
           </template>
         </v-select>
       </v-layout>
-      <v-divider vertical class="mx-2 hidden-sm-and-down"/>
-      <v-spacer/>
-      <v-icon class="new-task-form__timer-form-icon">timer</v-icon>
-      <v-spacer/>
-      <v-divider vertical class="mx-2 hidden-sm-and-down"/>
-      <v-btn class="new-task-form__submit-button" flat>start</v-btn>
+      <v-divider
+        vertical
+        class="mx-2 hidden-sm-and-down"
+      />
+      <v-spacer />
+      <v-icon class="new-task-form__timer-form-icon">
+        timer
+      </v-icon>
+      <v-spacer />
+      <v-divider
+        vertical
+        class="mx-2 hidden-sm-and-down"
+      />
+      <v-btn
+        class="new-task-form__submit-button"
+        flat
+      >
+        start
+      </v-btn>
     </v-layout>
   </v-card>
 </template>
 
 <script>
-import { randomGradient } from "@/utils/styleUtils";
-
 export default {
-  name: "new-task-form",
+  name: 'NewTaskForm',
   data: () => ({
     task: {
-      description: "",
+      description: '',
       project: {},
-      tags: []
+      tags: [],
     },
     projects: [
       {
-        name: "A",
-        prefix: "A prefix"
+        name: 'A',
+        prefix: 'A prefix',
       },
       {
-        name: "B",
-        prefix: "B prefix"
+        name: 'B',
+        prefix: 'B prefix',
       },
       {
-        name: "C",
-        prefix: "C prefix"
-      }
+        name: 'C',
+        prefix: 'C prefix',
+      },
     ],
-    tags: ["qwe", "asd", "fghsd", "12345", "fghfghgh", "wefdwesdsdsdsddwe"]
+    tags: ['qwe', 'asd', 'fghsd', '12345', 'fghfghgh', 'wefdwesdsdsdsddwe',],
   }),
-  computed: {
-    gradientStyeObject: () => randomGradient()
-  }
-};
+}
 </script>
 
 <style lang="scss" scoped>

@@ -1,5 +1,6 @@
-@import "./_colors";
-@import "./_keyframes";
+@import "./_animations.scss";
+@import "./_colors.scss";
+@import "./_constatnts.scss";
 
 @mixin shadow () {
   box-shadow: 0 1rem 3rem rgba(0,0,0,0.2);

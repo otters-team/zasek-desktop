@@ -1,18 +1,18 @@
 <template>
   <div>
-    <new-task-form/>
+    <new-task-form />
   </div>
 </template>
 
 <script>
-import NewTaskForm from "@/components/NewTaskForm";
+import NewTaskForm from '@/components/NewTaskForm'
 
 export default {
-  name: "tracker-page",
+  name: 'TrackerPage',
   components: {
-    NewTaskForm
-  }
-};
+    NewTaskForm,
+  },
+}
 </script>
 
 <style lang="scss" scoped>

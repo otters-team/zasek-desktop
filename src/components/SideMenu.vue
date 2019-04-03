@@ -1,28 +1,36 @@
 <template>
   <v-navigation-drawer
     :value="value"
-    @input="newValue => $emit('input', newValue)"
     clipped
     absolute
     floating
+    :width="200"
     overflow
     app
     class="side-menu"
     :class="{'side-menu--with-shadow': value}"
+    @input="newValue => $emit('input', newValue)"
   >
     <v-list class="py-3">
       <v-list-tile
         v-for="(item, index) in items"
         :key="index"
-        @click="$router.push({name: item.to})"
         class="side-menu__item py-1"
+        @click="$router.push({name: item.to})"
       >
         <v-list-tile-action>
-          <v-icon class="side-menu__item-icon" v-if="item.icon">{{ item.icon }}</v-icon>
+          <v-icon
+            v-if="item.icon"
+            class="side-menu__item-icon"
+          >
+            {{ item.icon }}
+          </v-icon>
         </v-list-tile-action>
 
         <v-list-tile-content>
-          <v-list-tile-title class="side-menu__item-text">{{ item.text }}</v-list-tile-title>
+          <v-list-tile-title class="side-menu__item-text">
+            {{ item.text }}
+          </v-list-tile-title>
         </v-list-tile-content>
       </v-list-tile>
     </v-list>
@@ -31,25 +39,25 @@
 
 <script>
 export default {
-  name: "side-menu",
-  props: ["value"],
+  name: 'SideMenu',
+  props: ['value',],
   computed: {
     items() {
       return [
         {
-          to: "tracker",
-          text: "Main page",
-          icon: "home"
+          to: 'tracker',
+          text: 'Main page',
+          icon: 'home',
         },
         {
-          to: "about",
-          text: "About page",
-          icon: "info"
-        }
-      ];
-    }
-  }
-};
+          to: 'about',
+          text: 'About page',
+          icon: 'info',
+        },
+      ]
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>

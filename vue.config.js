@@ -8,5 +8,5 @@ module.exports = {
     webpackConfig.resolve.alias
       .set('@', resolve('src'))
       .set('styles', resolve('src/styles/_index.scss'))
-  }
+  },
 }

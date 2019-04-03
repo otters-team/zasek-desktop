@@ -6,7 +6,7 @@ import Vuetify, {
   VCard,
 } from 'vuetify/lib'
 import {
-  Ripple
+  Ripple,
 } from 'vuetify/lib/directives'
 import 'vuetify/src/stylus/app.styl'
 
@@ -19,7 +19,7 @@ Vue.use(Vuetify, {
     VCard,
   },
   directives: {
-    Ripple
+    Ripple,
   },
   theme: {
     primary: '#FA709A',
@@ -35,6 +35,6 @@ Vue.use(Vuetify, {
       return process.env.NODE_ENV === 'production'
         ? css.replace(/[\s|\r\n|\r|\n]/g, '')
         : css
-    }
+    },
   },
 })

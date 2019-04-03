@@ -4,8 +4,8 @@
 
 <script>
 export default {
-  name: "about-page"
-};
+  name: 'AboutPage',
+}
 </script>
 
 <style>
