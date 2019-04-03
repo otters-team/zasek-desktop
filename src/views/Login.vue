@@ -1,21 +1,10 @@
 <template>
-  <v-layout
-    row
-    wrap
-    justify-end
+  <v-layout 
+    row wrap
+    justify-center align-center
   >
-    <v-flex
-      xs12
-      md6
-      align-content-center
-    >
-      <v-layout
-        column
-        align-center
-        justify-center
-      >
-        <login-form class="my-5" />
-      </v-layout>
+    <v-flex xs10 sm8 md6 lg4>
+      <login-form />
     </v-flex>
   </v-layout>
 </template>

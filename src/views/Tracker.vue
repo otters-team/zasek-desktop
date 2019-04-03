@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <v-flex>
     <new-task-form />
-  </div>
+  </v-flex>
 </template>
 
 <script>

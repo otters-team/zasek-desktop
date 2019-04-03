@@ -21,14 +21,14 @@
         <v-list-tile-action>
           <v-icon
             v-if="item.icon"
-            class="side-menu__item-icon"
+            class="side-menu__item-icon primary--text"
           >
             {{ item.icon }}
           </v-icon>
         </v-list-tile-action>
 
         <v-list-tile-content>
-          <v-list-tile-title class="side-menu__item-text">
+          <v-list-tile-title class="side-menu__item-text primary--text">
             {{ item.text }}
           </v-list-tile-title>
         </v-list-tile-content>
@@ -40,7 +40,9 @@
 <script>
 export default {
   name: 'SideMenu',
-  props: ['value',],
+  props: {
+    value: Boolean,
+  },
   computed: {
     items() {
       return [
@@ -64,15 +66,7 @@ export default {
 @import "~styles";
 
 .side-menu {
-  background-color: $white;
-  border-bottom-right-radius: $border-radius * 3;
-
-  &__item {
-    &-icon,
-    &-text {
-      color: $primary;
-    }
-  }
+  border-bottom-right-radius: $border-radius;
 
   &--with-shadow {
     @include shadow();

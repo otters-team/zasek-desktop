@@ -1,17 +1,13 @@
 <template>
-  <v-app
-    id="app"
-    class="app"
-  >
+  <v-app id="app">
     <side-menu v-model="isSideMenuOpen" />
     <nav-bar v-model="isSideMenuOpen" />
 
-    <v-content class="app__content">
-      <v-container
-        fluid
-        class="app__content-wrapper"
-      >
-        <router-view />
+    <v-content>
+      <v-container fill-height fluid>
+        <v-layout>
+          <router-view />
+        </v-layout>
       </v-container>
     </v-content>
   </v-app>
@@ -32,16 +28,3 @@
     }),
   }
 </script>
-
-<style scoped lang="scss">
-  @import "~styles";
-
-  .app {
-    &__content {
-      background-color: $white;
-      &-wrapper {
-        height: 100%;
-      }
-    }
-  }
-</style>
