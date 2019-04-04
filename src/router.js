@@ -36,15 +36,6 @@ const routes = [
     path: '*',
     redirect: '/',
   },
-  // {
-  //   path: '/404',
-  //   name: '404',
-  //   component: () => import('@/views/404Page'),
-  // },
-  // {
-  //   path: '*',
-  //   redirect: '/404',
-  // },
 ]
 
 const router = new Router({
