@@ -1,29 +1,47 @@
-import Api from '@/api'
+// import Api from '@/api'
 
-const accessTokenName = 'zasek-auth-token'
+const defaultState = () => ({
+  accessToken: '',
+})
 
 export default {
-  state: {
-    accessToken: window.localStorage.getItem(accessTokenName) || '',
-  },
+  state: defaultState(),
   getters: {
     user: (state) => state,
-    token: (state) => state.accessToken,
+    isAuthenticated: (state) => Boolean(state.accessToken),
+    accessToken: (state) => state.accessToken,
   },
   actions: {
-    register: (username, password, email) => {
-      
-    },
-    login: (username, password, email) => {
-      
-    },
-    logout: () => {
+    login: async (state, loginFormData) => {
+      const { commit } = state
+      const { login, email } = loginFormData
 
+      const userData = {
+        name: login,
+        email: email,
+        accessToken: '123cjhksduichsducgsdicuhsduicduich'
+      }
+
+      // const response = await Api.Login(name, email)
+      commit('LOGIN', userData)
+    },
+    logout: async (state) => {
+      const { commit } = state
+
+      // const response = await Api.Login(name, email)
+      commit('LOGOUT')
     },
   },
   mutations: {
-    LOGIN: (state, accessToken) => {
-      state.accessToken = accessToken
+    LOGIN: (state, userData) => {
+      const newState = {
+        ...userData
+      }
+
+      Object.assign(state, newState)
+    },
+    LOGOUT: (state) => {
+      Object.assign(state, defaultState())
     },
   },
 }

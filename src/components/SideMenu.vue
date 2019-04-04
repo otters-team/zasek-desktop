@@ -1,5 +1,6 @@
 <template>
   <v-navigation-drawer
+    v-if="isAuthenticated"
     :value="value"
     clipped
     absolute
@@ -38,12 +39,15 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'SideMenu',
   props: {
     value: Boolean,
   },
   computed: {
+    ...mapGetters(['isAuthenticated']),
     items() {
       return [
         {

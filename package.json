@@ -12,6 +12,7 @@
     "postuninstall": "electron-builder install-app-deps"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "node-sass": "^4.11.0",
     "npm": "^6.8.0",
     "sass-loader": "^7.1.0",
