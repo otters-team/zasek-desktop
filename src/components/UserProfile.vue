@@ -1,6 +1,6 @@
 <template>
   <v-layout row wrap align-center>
-    <pre class="white--text">{{ user.name }}</pre>
+    <pre class="white--text">{{ user.login }}</pre>
 
     <v-avatar
       color="white"

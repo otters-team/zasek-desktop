@@ -1,6 +1,8 @@
 // import Api from '@/api'
 
 const defaultState = () => ({
+  login: '',
+  email: '',
   accessToken: '',
 })
 
@@ -14,11 +16,11 @@ export default {
   actions: {
     login: async (state, loginFormData) => {
       const { commit } = state
-      const { login, email } = loginFormData
+      const { login, password } = loginFormData
 
       const userData = {
-        name: login,
-        email: email,
+        login,
+        password,
         accessToken: '123cjhksduichsducgsdicuhsduicduich'
       }
 

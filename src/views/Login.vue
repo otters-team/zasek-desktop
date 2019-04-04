@@ -3,9 +3,7 @@
     row wrap
     justify-center align-center
   >
-    <v-flex xs10 sm8 md6 lg4>
-      <login-form />
-    </v-flex>
+    <login-form />
   </v-layout>
 </template>
 
