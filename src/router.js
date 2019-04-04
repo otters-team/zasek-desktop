@@ -17,6 +17,9 @@ const routes = [
   {
     path: '/about',
     name: 'about',
+    meta: {
+      requiresAuth: true,
+    },
     component: () => import('@/views/About.vue'),
   },
   {
@@ -56,6 +59,11 @@ router.beforeEach((to, from, next) => {
           redirect: to.fullPath,
         },
       })
+    } else if(from.query.redirect) {
+      const nextUrl = from.query.redirect
+      delete from.query.redirect
+      
+      next({ path: nextUrl })
     } else {
       next()
     }

@@ -1,12 +1,3 @@
 <template lang="pug">
-  h1 About
+  h1.ml-3 About
 </template>
-
-<script>
-export default {
-  name: 'AboutPage',
-}
-</script>
-
-<style>
-</style>

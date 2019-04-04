@@ -5,6 +5,7 @@
         <h2> Login Form </h2>
 
         <div class="my-3">
+          <v-input />
           <!-- // TODO: inputs -->
         </div>
 
@@ -42,11 +43,7 @@ export default {
       }
 
       await this.$store.dispatch('login', loginFormData)
-
-      const redirectUrl = (this.$router.query || {}).redirect
-      const nextUrl = redirectUrl ? redirectUrl : '/'
-
-      this.$router.push({ path: nextUrl })
+      this.$router.push({ path: '/' })
     }
   }
 }
