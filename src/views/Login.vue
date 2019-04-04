@@ -1,8 +1,5 @@
 <template>
-  <v-layout 
-    row wrap
-    justify-center align-center
-  >
+  <v-layout row wrap justify-center align-center>
     <login-form />
   </v-layout>
 </template>
